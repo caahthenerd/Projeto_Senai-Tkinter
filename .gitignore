@@ -1,0 +1,6 @@
+__pycache__
+.vscode
+assets
+bd_produto.db
+session.txt
+usuarios.db
