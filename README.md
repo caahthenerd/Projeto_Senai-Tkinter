@@ -1,6 +1,8 @@
 ## 🌵 Raízes da Caatinga v1
 
-Raízes da Caatinga foi um projeto idealizado em grupo para avaliação da matéria Lógica de Programação. 
+Raízes da Caatinga v1 foi um projeto idealizado em grupo para avaliação final das matéria Lógica de Programação e Criatividade e ideação em projetos no primeiro semestre do Senai.
+
+Esta é a primeira versão pois no decorrer do curso os conhecimentos seriam ampliados em relação as demais linguagens de programação, além de melhorar a estilização com [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML) e [CSS](https://developer.mozilla.org/pt-BR/docs/Web/CSS).
 
 Foi solicitado que sistema cumprisse os requisitos abaixo:
 
