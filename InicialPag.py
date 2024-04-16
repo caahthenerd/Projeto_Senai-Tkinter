@@ -2,10 +2,16 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
 from Produtos import Produtos
-from CadastroProduto import Tela 
+from CadastroProduto import Tela
 
 class InicialPag:
     def __init__(self):
+        
+        self.is_cliente = self.ler_sessao()
+        
+        print(self.is_cliente)
+        
+        self.produtos = []
         # Janela principal
         self.janela = Tk()
         self.janela.title("Raizes da Caatinga")
@@ -19,10 +25,10 @@ class InicialPag:
 
         self.frame_lista = Frame(self.paned_window, bg="#fff0d7")
         self.paned_window.add(self.frame_lista)
-
-        self.buttonCadastrarProduto = Button(self.frame_lista, text="Cadastrar Produtos", font=("Calibri", 10, "bold"), bg="#7387a0", fg="#ffffff")
-        self.buttonCadastrarProduto.bind("<Button-1>", self.direcionarCadastro)
-        self.buttonCadastrarProduto.pack(padx=10, pady=10)
+        if not self.is_cliente: 
+            self.buttonCadastrarProduto = Button(self.frame_lista, text="Cadastrar Produtos", font=("Calibri", 10, "bold"), bg="#7387a0", fg="#ffffff")
+            self.buttonCadastrarProduto.bind("<Button-1>", self.direcionarCadastro)
+            self.buttonCadastrarProduto.pack(padx=10, pady=10)
 
         self.label_pesquisa = Label(self.frame_lista, text="Pesquisar produto:", bg="#fff0d7", font=("Calibri", 10, "bold"))
         self.label_pesquisa.pack()
@@ -68,8 +74,7 @@ class InicialPag:
 
     def mostrar_resultados(self):
         self.listbox_resultados.delete(0, END)
-        produto = Produtos
-        lista = produto.buscar_produtos()
+        lista = Produtos.buscar_produtos()
         for produto in lista:
             self.listbox_resultados.insert(END, produto[1])
         if (len(lista) == 0):
@@ -78,7 +83,7 @@ class InicialPag:
     def pesquisar(self):
         termo_pesquisa = self.entry_pesquisa.get()
         resultados = []
-
+        produto = Produtos 
         for produto in self.produtos:
             if termo_pesquisa.lower() in produto.nomeproduto.lower():
                 resultados.append(produto)
@@ -100,5 +105,16 @@ class InicialPag:
         self.label_validade.config(text=f"Validade: {produto[5]}")
 
     def direcionarCadastro(self, event):
-        self.janela.destroy()
+        # self.janela.destroy()
         Tela()
+
+    def ler_sessao(self):
+        self.tipo_usuario = None
+        self.email = None
+        with open('session.txt', 'r') as file:
+            for line in file:
+                if "TipoUsuario:" in line:
+                    tipo_usuario = line.split(":")[1].strip()
+                elif "Email:" in line:
+                    email = line.split(":")[1].strip()
+        return tipo_usuario == "Cliente"

@@ -1,6 +1,8 @@
 from Produtos import Produtos
 from tkinter import *
 from tkinter import messagebox
+# from InicialPag import InicialPag
+
 
 class Tela:
 
@@ -33,7 +35,7 @@ class Tela:
         self.textEstoque.grid(row=1, column=4,  sticky="w")
 
 
-        self.labelLote = Label(self.frame1, text="Lote do produto: ", bg=self.bgpadrao,     font=self.fonte, width=20)
+        self.labelLote = Label(self.frame1, text="Lote do produto: ", bg=self.bgpadrao, font=self.fonte, width=20)
         self.textLote = Entry(self.frame1, width= 25, font=self.fonte)
         self.labelLote.grid(row=2, column=0)
         self.textLote.grid(row=2, column=1,  sticky="w")
@@ -59,6 +61,9 @@ class Tela:
 
         self.inserirproduto = Button(self.frame1, width=12, text="Inserir Produto", command=self.salvarProdutosNoBD, font=self.fonte, bg="#776621",fg="white")
         self.inserirproduto.grid(row=4, column=1, pady=10, padx=10)
+        
+        self.inserirproduto = Button(self.frame1, width=20, text="Retornar Página Inicial", command=self.retornarPagInicial, font=self.fonte, bg="#A6C4B1",fg="black")
+        self.inserirproduto.grid(row=4, column=4, pady=10, padx=10)
 
         mainloop()  
 
@@ -72,3 +77,8 @@ class Tela:
         osProdutos.valor = self.textValor.get()
         print(osProdutos.nomeproduto)
         messagebox.showinfo("Info", osProdutos.insertProduto(osProdutos))
+        
+        
+    def retornarPagInicial(self):
+        self.janela.destroy()
+        # InicialPag()

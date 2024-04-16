@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
 from Database import Database
+# from Login import Login
 
 
 class Cadastros:
@@ -84,6 +85,7 @@ class Cadastros:
             msg = cadUser.insertUser(cadUser)
             if msg == "Tudo certo":
                 messagebox.showinfo("Sucesso", "Cadastro Concluído!")
+                self.janela.destroy()
             else:
                 messagebox.showerror("Erro", "Erro ao cadastrar! Solicite suporte do desenvolvedor.")
         else:

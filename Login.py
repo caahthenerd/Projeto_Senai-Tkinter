@@ -69,7 +69,7 @@ class Login:
                 with open("session.txt", "w") as file:
                     file.write(f"TipoUsuario: {tipousuario}\n")
                     file.write(f"Email: {email}\n")
-                self.janela.destroy
+                self.janela.destroy()
                 InicialPag()
             else:
                 messagebox.showerror("Info", "Verifique login e senha!")
@@ -77,7 +77,7 @@ class Login:
             messagebox.showinfo("Info", "Preencha todos os campos!")
     
     def realizarCadastro(self, event):
-        self.janela.destroy()
+        # self.janela.destroy()
         Cadastros()
 
 t = Login()
